@@ -1,0 +1,16 @@
+---
+- name: "Test NetBox modules"
+  connection: local
+  hosts: localhost
+  gather_facts: False
+  collections:
+    - netbox.netbox
+
+  tasks:
+    - name: Create prefix within NetBox with only required information
+      netbox_prefix:
+        netbox_url: https://demo.netbox.dev/
+        netbox_token: b6780302a6f426dd468f738b0e951d32188566a2
+        data:
+          prefix: 10.156.0.0/19
+        state: present
