@@ -6,11 +6,14 @@
   collections:
     - netbox.netbox
 
+  vars_files:
+    - vars/main.yml
+
   tasks:
     - name: Create prefix within NetBox with only required information
       netbox_prefix:
-        netbox_url: https://demo.netbox.dev/
-        netbox_token: b6780302a6f426dd468f738b0e951d32188566a2
+        netbox_url: "{{ netbox_url }}"
+        netbox_token: "{{ netbox_token }}"
         data:
           prefix: 10.156.0.0/19
         state: present
